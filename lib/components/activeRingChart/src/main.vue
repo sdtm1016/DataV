@@ -131,18 +131,33 @@ export default {
         digitalFlopUnit
       } = mergedConfig
 
-      const value = data.map(({ value }) => value)
+      const value = data.map(({ value }) => value);
+      const sum = value.reduce((all, v) => all + v, 0);
 
-      let displayValue
+      let tatalDiaplsyValue = 0;
+      for (let i = 0; i < data.length; i++) {
+        let currentValue = data[i].value;
+        //非最后一个
+        if(i<data.length-1) {
+          const percent = parseFloat((currentValue / sum) * 100) || 0
+          data[i]["cusTomDisplayValue"] = percent;
+          tatalDiaplsyValue = tatalDiaplsyValue+percent;
+        }else{
+          data[i]["cusTomDisplayValue"] = (100 - tatalDiaplsyValue);
+        }
+      }
+
+
+      let displayValue;
 
       if (showOriginValue) {
         displayValue = value[activeIndex]
       } else {
-        const sum = value.reduce((all, v) => all + v, 0)
-
-        const percent = parseFloat((value[activeIndex] / sum) * 100) || 0
-
-        displayValue = percent
+        // const sum = value.reduce((all, v) => all + v, 0)
+        // const percent = parseFloat((value[activeIndex] / sum) * 100) || 0
+        // displayValue = percent
+        //自定义显示
+        displayValue= data[activeIndex]["cusTomDisplayValue"];
       }
 
       return {
