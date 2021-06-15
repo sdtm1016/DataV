@@ -139,7 +139,8 @@ export default {
         let currentValue = data[i].value;
         //非最后一个
         if(i<data.length-1) {
-          const percent = parseFloat((currentValue / sum) * 100) || 0
+          //四舍五入取整数
+          const percent = Math.round(parseFloat((currentValue / sum) * 100) || 0);
           data[i]["cusTomDisplayValue"] = percent;
           tatalDiaplsyValue = tatalDiaplsyValue+percent;
         }else{
