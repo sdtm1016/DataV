@@ -144,7 +144,8 @@ export default {
           data[i]["cusTomDisplayValue"] = percent;
           tatalDiaplsyValue = tatalDiaplsyValue+percent;
         }else{
-          data[i]["cusTomDisplayValue"] = (100 - tatalDiaplsyValue);
+          let v = 100 - tatalDiaplsyValue;
+          data[i]["cusTomDisplayValue"] = v > 0 ? v : 0;
         }
       }
 

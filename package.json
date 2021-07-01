@@ -1,6 +1,6 @@
 {
   "name": "md-data-view",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "JiaMing <743192023@qq.com>",
   "description": "Vue Large screen data display component library",
   "main": "lib/index.js",
