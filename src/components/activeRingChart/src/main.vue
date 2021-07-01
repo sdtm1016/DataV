@@ -145,6 +145,10 @@ export default {
           tatalDiaplsyValue = tatalDiaplsyValue+percent;
         }else{
           let v = 100 - tatalDiaplsyValue;
+          if (v < 0) {
+            let lastSecodItem = i - 1;
+            data[lastSecodItem]["cusTomDisplayValue"] = data[lastSecodItem]["cusTomDisplayValue"] + v;
+          }
           data[i]["cusTomDisplayValue"] = v > 0 ? v : 0;
         }
       }
